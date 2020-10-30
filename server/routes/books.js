@@ -23,10 +23,11 @@ router.get('/', (req, res, next) => {
 
 });
 
-    /*****************
-     * ERROR CODE HERE *
-     *****************/
-//  GET 
+//      GET
+
+/*****************
+* ERROR CODE HERE *
+*****************/
 router.get('/add', (req, res, next) => {
 
     res.render('books/details', {title: 'Add Book'})          
@@ -35,9 +36,8 @@ router.get('/add', (req, res, next) => {
 
 
 
-// POST
+// POST 
 router.post('/add', (req, res, next) => {
-
 
     
     let newBook = book({
@@ -65,10 +65,11 @@ router.post('/add', (req, res, next) => {
 });
 
 
-// GET the Book Details page in order to edit an existing Book
+// GET 
 router.get('/:id', (req, res, next) => {
 
   let id = req.params.id;
+
 
     book.findById(id, (err, bookToEdit) => {
       if(err)
@@ -91,6 +92,7 @@ router.get('/:id', (req, res, next) => {
 router.post('/:id', (req, res, next) => {
 
 
+
     let id = req.params.id
     let updatedBook = book({
       "_id": id,
@@ -109,7 +111,7 @@ router.post('/:id', (req, res, next) => {
       }
       else
       {
-          // refresh the book list
+
           res.redirect('/books');
       }
   });
@@ -132,7 +134,7 @@ router.get('/delete/:id', (req, res, next) => {
         }
         else
         {
-
+             // refresh the book list
              res.redirect('/book-list');
         }
     });
