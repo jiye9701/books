@@ -1,3 +1,6 @@
+//Created by: Jiye Yu - Student Nr.:301116244 Created on Oct 28, 2020
+//COMP229_section03_Jiye Yu
+
 // modules required for routing
 let express = require('express');
 let router = express.Router();
@@ -73,9 +76,8 @@ router.get('/edit/:id', (req, res, next) => {
 
   let id = req.params.id;
 
-    /*****************
-     *  CODE HERE *
-     *****************/
+
+  // pass id to the db
     book.findById(id, (err, bookToEdit) => {
       if(err)
       {
@@ -84,7 +86,7 @@ router.get('/edit/:id', (req, res, next) => {
       }
       else
       {
-          //show the edit view
+          //show the edit page
           res.render('books/details', {title: 'Edit Book', books: bookToEdit})
       }
   });
