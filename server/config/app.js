@@ -7,10 +7,11 @@ let logger = require('morgan');
 
 // import "mongoose" - required for DB Access
 let mongoose = require('mongoose');
-// URI
+
+// URI  >> URL
 let DB = require('./db');
 
-mongoose.connect(process.env.URI || DB.URI, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.URI || DB.URL, {useNewUrlParser: true, useUnifiedTopology: true});
 
 let mongoDB = mongoose.connection;
 mongoDB.on('error', console.error.bind(console, 'Connection Error:'));
@@ -36,6 +37,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../client')));
+app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 
 // route redirects
@@ -56,7 +58,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', { title: 'Error'});
 });
 
 module.exports = app;

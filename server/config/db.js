@@ -4,12 +4,10 @@
   
 //};
 
-module.exports.URL = "mongodb+srv://jiye:wjpYAzGhxuVvwMVc@mongodbserver.spi3d.mongodb.net/book_store?retryWrites=true&w=majority"
+
 
 //local MongoDB deployment ->
-
-//module.exports.URL = "mongodb+srv://jiye:<wjpYAzGhxuVvwMVc>@mongodbserver.spi3d.mongodb.net/<book_store>?retryWrites=true&w=majority"
-
+module.exports.URL = "mongodb+srv://jiye:wjpYAzGhxuVvwMVc@mongodbserver.spi3d.mongodb.net/book_store?retryWrites=true&w=majority";
 //const MongoClient = require('mongodb').MongoClient;
 //const uri = "mongodb+srv://jiye:<wjpYAzGhxuVvwMVc>@mongodbserver.spi3d.mongodb.net/<book_store>?retryWrites=true&w=majority";
 //const client = new MongoClient(uri, { useNewUrlParser: true });

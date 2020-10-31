@@ -42,13 +42,13 @@ router.post('/add', (req, res, next) => {
      * ADD CODE HERE *
      *****************/
     
-    let newBook = {
+    let newBook = book ({
       Title: req.body.title,
       Description: req.body.description,
       Price: req.body.price,
       Author: req.body.author,
       Genre: req.body.genre
-  };
+  });
   console.log(req.body);
 
   book.create(newBook, (err, book) =>{
@@ -69,7 +69,7 @@ router.post('/add', (req, res, next) => {
 
 
 // GET the Book Details page in order to edit an existing Book
-router.get('/:id', (req, res, next) => {
+router.get('/edit/:id', (req, res, next) => {
 
   let id = req.params.id;
 
@@ -80,7 +80,7 @@ router.get('/:id', (req, res, next) => {
       if(err)
       {
           console.log(err);
-          //res.end(err);
+          res.end(err);
       }
       else
       {
@@ -94,19 +94,20 @@ router.get('/:id', (req, res, next) => {
 });
 
 // POST - process the information passed from the details form and update the document
-router.post('/:id', (req, res, next) => {
+router.post('/edit/:id', (req, res, next) => {
 
     /*****************
      * ADD CODE HERE *
      *****************/
     let id = req.params.id
+
     let updatedBook = book({
-      _id: id,
-      title: req.body.title,
-      description: req.body.description,
-      price: req.body.price,
-      author: req.body.author,
-      genre: req.body.genre
+      "_id": id,
+      "Title": req.body.title,
+      "Description": req.body.description,
+      "Price": req.body.price,
+      "Author": req.body.author,
+      "Genre": req.body.genre
   });
 
   book.updateOne({_id: id}, updatedBook, (err) => {
